@@ -1,34 +1,35 @@
+import 'package:eunbinlib_app/common/provider/router_provider.dart';
+import 'package:eunbinlib_app/common/view/RootTab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ProviderScope(
+      child: _App(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class _App extends ConsumerWidget {
+  const _App({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final router = ref.watch(routerProvider);
+
+    Future.delayed(const Duration(seconds: 2), () {
+      router.goNamed(RootTab.routeName);
+    });
+
+    return MaterialApp.router(
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        fontFamily: 'NotoSans',
       ),
-      home: const Root(),
-    );
-  }
-}
-
-class Root extends StatelessWidget {
-  const Root({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("박은빈 도서관"),
-      ),
+      debugShowCheckedModeBanner: false,
+      routerDelegate: router.routerDelegate,
+      routeInformationProvider: router.routeInformationProvider,
+      routeInformationParser: router.routeInformationParser,
     );
   }
 }
