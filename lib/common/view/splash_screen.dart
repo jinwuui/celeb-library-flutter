@@ -16,10 +16,8 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.local_library_outlined,
-              color: Colors.white,
-              size: 200,
+            Image.asset(
+              'asset/img/이세영팀장님.jpg',
             ),
             const SizedBox(height: 16),
             CircularProgressIndicator(

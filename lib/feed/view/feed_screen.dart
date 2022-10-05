@@ -6,7 +6,10 @@ class FeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('홈'),
+      // child: AssetImage('asset/img/토끼대장.gif'),
+      child: Image.asset(
+        'asset/img/토끼대장.gif',
+      ),
     );
   }
 }

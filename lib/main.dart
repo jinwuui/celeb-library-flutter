@@ -1,5 +1,5 @@
 import 'package:eunbinlib_app/common/provider/router_provider.dart';
-import 'package:eunbinlib_app/common/view/RootTab.dart';
+import 'package:eunbinlib_app/common/view/root_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,7 +18,7 @@ class _App extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // final router = ref.watch(routerProvider);
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       router.goNamed(RootTab.routeName);
     });
 

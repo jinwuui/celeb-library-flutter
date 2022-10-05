@@ -11,6 +11,8 @@ const TRUE = 'true';
 
 final ip = Platform.isIOS ? simulatorIp : emulatorIp;
 
-const lg = 32.0;
+const xxl = 50.0;
+const xl = 32.0;
+const lg = 24.0;
 const md = 16.0;
 const sm = 8.0;

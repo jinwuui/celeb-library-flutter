@@ -1,7 +1,8 @@
 import 'package:eunbinlib_app/common/const/colors.dart';
+import 'package:eunbinlib_app/common/const/data.dart';
 import 'package:eunbinlib_app/common/layout/default_layout.dart';
-import 'package:eunbinlib_app/community/view/community_screen.dart';
 import 'package:eunbinlib_app/feed/view/feed_screen.dart';
+import 'package:eunbinlib_app/post/view/post_screen.dart';
 import 'package:eunbinlib_app/user/view/user_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class RootTab extends StatefulWidget {
 class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
   late TabController controller;
   int index = 0;
+  static const List<int> fabWhiteList = [1];
 
   @override
   void initState() {
@@ -43,12 +45,13 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
+      floatingActionButton: fabWhiteList.contains(index) ? _renderFab() : null,
       child: TabBarView(
         controller: controller,
         physics: NeverScrollableScrollPhysics(),
         children: [
           FeedScreen(),
-          CommunityScreen(),
+          PostScreen(),
           UserScreen(),
         ],
       ),
@@ -77,6 +80,19 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
             label: '프로필',
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _renderFab() {
+    return FloatingActionButton(
+      backgroundColor: PRIMARY_COLOR,
+      onPressed: () {
+        print('게시글 등록');
+      },
+      child: Icon(
+        Icons.add_rounded,
+        size: xl,
       ),
     );
   }

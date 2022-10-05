@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 const PRIMARY_COLOR = Color.fromRGBO(213, 191, 162, 1);
 
 // 글자 색상
-const BODY_TEXT_COLOR = Color(0xFF868686);
+const BODY_TEXT_COLOR = Color(0xFF727272);
 
 // 텍스트필드 배경 색상
 const INPUT_BG_COLOR = Color(0xFFFBFBFB);
@@ -18,3 +18,6 @@ const EUNBIN_LOGO_COLOR = Color.fromRGBO(213, 191, 162, 1);
 
 // 색 예쁘다
 const EUNBIN_PINK_COLOR = Color.fromRGBO(255, 191, 162, 1);
+
+// 진한 회색
+const BORDER_GREY_COLOR = Color(0xFFC7C7C7);
