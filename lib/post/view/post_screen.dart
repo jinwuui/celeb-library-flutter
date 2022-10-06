@@ -1,4 +1,7 @@
+import 'package:eunbinlib_app/common/component/pagination_list_view.dart';
 import 'package:eunbinlib_app/post/component/post_card.dart';
+import 'package:eunbinlib_app/post/model/post_model.dart';
+import 'package:eunbinlib_app/post/provider/post_provider.dart';
 import 'package:eunbinlib_app/post/view/post_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -8,49 +11,25 @@ class PostScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey.shade100,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 0.0),
-        child: RefreshIndicator(
-          onRefresh: () async {
-            print('리프레시');
+    return PaginationListView<PostModel>(
+      provider: postProvider,
+      itemBuilder: <PostModel>(_, index, model) {
+        return GestureDetector(
+          onTap: () {
+            print('go to detail screen');
+            print(model.id);
+            context.goNamed(
+              PostDetailScreen.routeName,
+              params: {
+                'pid': model.id,
+              },
+            );
           },
-          child: ListView.separated(
-            physics: AlwaysScrollableScrollPhysics(),
-            // controller: controller,
-            itemCount: 20,
-            itemBuilder: (_, index) {
-              if (index == 19) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  // child: Center(
-                  //   child: cp is CursorPaginationFetchingMore
-                  //       ? CircularProgressIndicator()
-                  //       : Text('마지막 데이터입니다ㅠㅠ'),
-                  // ),
-                );
-              }
-
-              return GestureDetector(
-                onTap: () {
-                  context.goNamed(
-                    PostDetailScreen.routeName,
-                    params: {
-                      'pid': 'test pid',
-                    },
-                  );
-                },
-                child: PostCard(),
-              );
-            },
-            separatorBuilder: (_, index) => const SizedBox(height: 16),
+          child: PostCard.fromModel(
+            model: model,
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

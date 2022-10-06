@@ -1,9 +1,43 @@
 import 'package:eunbinlib_app/common/const/colors.dart';
 import 'package:eunbinlib_app/common/const/data.dart';
+import 'package:eunbinlib_app/post/model/post_model.dart';
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
-  const PostCard({Key? key}) : super(key: key);
+  final String content;
+  final Image? image;
+  final String writer;
+  final int likeCount;
+  final int commentCount;
+  final DateTime createdAt;
+
+  const PostCard({
+    required this.content,
+    this.image,
+    required this.writer,
+    required this.likeCount,
+    required this.commentCount,
+    required this.createdAt,
+    Key? key,
+  }) : super(key: key);
+
+  factory PostCard.fromModel({
+    required PostModel model,
+  }) {
+    return PostCard(
+      content: model.content,
+      writer: model.writer,
+      likeCount: model.likeCount,
+      commentCount: model.commentCount,
+      image: model.imageUrl != null
+          ? Image.network(
+              model.imageUrl!,
+              fit: BoxFit.cover,
+            )
+          : null,
+      createdAt: model.createdAt,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
