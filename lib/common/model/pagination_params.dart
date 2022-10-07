@@ -4,21 +4,21 @@ part 'pagination_params.g.dart';
 
 @JsonSerializable()
 class PaginationParams {
-  final String? after;
-  final int? count;
+  final int? after;
+  final int? size;
 
   const PaginationParams({
     this.after,
-    this.count,
+    this.size,
   });
 
   PaginationParams copyWith({
-    String? after,
-    int? count,
+    int? after,
+    int? size,
   }) {
     return PaginationParams(
       after: after ?? this.after,
-      count: count ?? this.count,
+      size: size ?? this.size,
     );
   }
 

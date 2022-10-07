@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart' hide Headers;
 import 'package:eunbinlib_app/common/const/data.dart';
 import 'package:eunbinlib_app/common/model/cursor_pagination_model.dart';
+import 'package:eunbinlib_app/common/model/i_model_with_id.dart';
+import 'package:eunbinlib_app/common/model/only_id.dart';
 import 'package:eunbinlib_app/common/model/pagination_params.dart';
 import 'package:eunbinlib_app/common/provider/dio_provider.dart';
 import 'package:eunbinlib_app/common/repository/i_pagination_repository.dart';
@@ -32,28 +34,28 @@ abstract class PostRepository implements IPaginationRepository<PostModel> {
     @Queries() PaginationParams? paginationParams = const PaginationParams(),
   });
 
-  @GET('/{id}')
+  @GET('/{postId}')
   @Headers({ACCESS_TOKEN: true})
   Future<PostModel> getPostDetail({
-    @Path() required String id,
+    @Path() required int postId,
   });
 
   @POST('/')
   @Headers({ACCESS_TOKEN: true})
-  Future<PostModel> writePost({
-    required PostWriteReq postWriteReq,
+  Future<OnlyId> writePost({
+    @Body() required PostWriteReq postWriteReq,
   });
 
-  @PATCH('/{id}')
+  @PATCH('/{postId}')
   @Headers({ACCESS_TOKEN: true})
   Future<PostModel> editPost({
-    @Path() required String id,
-    required PostEditReq postEditReq,
+    @Path() required int postId,
+    @Body() required PostEditReq postEditReq,
   });
 
-  @DELETE('/{id}')
+  @DELETE('/{postId}')
   @Headers({ACCESS_TOKEN: true})
   Future<void> deletePost({
-    @Path() required String id,
+    @Path() required int postId,
   });
 }

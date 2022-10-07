@@ -4,20 +4,20 @@ part 'cursor_pagination_meta.g.dart';
 
 @JsonSerializable()
 class CursorPaginationMeta {
-  final int count;
+  final int size;
   final bool hasMore;
 
   CursorPaginationMeta({
-    required this.count,
+    required this.size,
     required this.hasMore,
   });
 
   CursorPaginationMeta copyWith({
-    int? count,
+    int? size,
     bool? hasMore,
   }) {
     return CursorPaginationMeta(
-      count: count ?? this.count,
+      size: size ?? this.size,
       hasMore: hasMore ?? this.hasMore,
     );
   }

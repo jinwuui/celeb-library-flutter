@@ -17,10 +17,14 @@ class PaginationListView<T extends IModelWithId>
   final StateNotifierProvider<PaginationStateNotifier, CursorPaginationBase>
       provider;
   final PaginationWidgetBuilder<T> itemBuilder;
+  final Color? backgroundColor;
+  final bool showPadding;
 
   const PaginationListView({
     required this.provider,
     required this.itemBuilder,
+    this.backgroundColor,
+    this.showPadding = true,
     Key? key,
   }) : super(key: key);
 
@@ -73,8 +77,11 @@ class _PaginationListViewState<T extends IModelWithId>
 
     final castedState = state as CursorPagination<T>;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: md),
+    return Container(
+      color: widget.backgroundColor,
+      padding: widget.showPadding
+          ? const EdgeInsets.symmetric(horizontal: md)
+          : null,
       child: RefreshIndicator(
         onRefresh: () async {
           ref.read(widget.provider.notifier).paginate(

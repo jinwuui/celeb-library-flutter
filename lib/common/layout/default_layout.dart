@@ -6,6 +6,8 @@ class DefaultLayout extends StatelessWidget {
   final Color backgroundColor;
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
+  final bool showUnderLine;
+  final List<Widget>? actions;
 
   const DefaultLayout({
     required this.child,
@@ -13,6 +15,8 @@ class DefaultLayout extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.bottomNavigationBar,
     this.floatingActionButton,
+    this.showUnderLine = false,
+    this.actions,
     Key? key,
   }) : super(key: key);
 
@@ -32,6 +36,15 @@ class DefaultLayout extends StatelessWidget {
       return null;
     } else {
       return AppBar(
+        actions: actions,
+        shape: showUnderLine
+            ? Border(
+                bottom: BorderSide(
+                  color: Colors.black54,
+                  width: 0.5,
+                ),
+              )
+            : null,
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
         elevation: 0,

@@ -4,8 +4,8 @@ const ACCESS_TOKEN_KEY = 'ACCESS_TOKEN';
 const REFRESH_TOKEN_KEY = 'REFRESH_TOKEN';
 
 // localhost
-const emulatorIp = '10.0.0.2:3000'; // android
-const simulatorIp = '127.0.0.1:3000'; // ios
+const emulatorIp = '10.0.0.2:8080'; // android
+const simulatorIp = '127.0.0.1:8080'; // ios
 
 const TRUE = 'true';
 

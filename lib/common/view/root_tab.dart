@@ -3,8 +3,10 @@ import 'package:eunbinlib_app/common/const/data.dart';
 import 'package:eunbinlib_app/common/layout/default_layout.dart';
 import 'package:eunbinlib_app/feed/view/feed_screen.dart';
 import 'package:eunbinlib_app/post/view/post_screen.dart';
+import 'package:eunbinlib_app/post/view/post_write_screen.dart';
 import 'package:eunbinlib_app/user/view/user_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class RootTab extends StatefulWidget {
   static String get routeName => 'root';
@@ -45,7 +47,8 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
-      floatingActionButton: fabWhiteList.contains(index) ? _renderFab() : null,
+      floatingActionButton:
+          fabWhiteList.contains(index) ? _renderWritePostFab() : null,
       child: TabBarView(
         controller: controller,
         physics: NeverScrollableScrollPhysics(),
@@ -84,11 +87,12 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _renderFab() {
+  Widget _renderWritePostFab() {
     return FloatingActionButton(
       backgroundColor: PRIMARY_COLOR,
       onPressed: () {
         print('게시글 등록');
+        context.goNamed(PostWriteScreen.routeName);
       },
       child: Icon(
         Icons.add_rounded,

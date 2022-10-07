@@ -4,20 +4,22 @@ import 'package:eunbinlib_app/post/model/post_model.dart';
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
+  final String title;
   final String content;
-  final Image? image;
-  final String writer;
-  final int likeCount;
-  final int commentCount;
-  final DateTime createdAt;
+  // final Image? image;
+  // final String writer;
+  // final int likeCount;
+  // final int commentCount;
+  // final DateTime createdAt;
 
   const PostCard({
+    required this.title,
     required this.content,
-    this.image,
-    required this.writer,
-    required this.likeCount,
-    required this.commentCount,
-    required this.createdAt,
+    // this.image,
+    // required this.writer,
+    // required this.likeCount,
+    // required this.commentCount,
+    // required this.createdAt,
     Key? key,
   }) : super(key: key);
 
@@ -25,17 +27,18 @@ class PostCard extends StatelessWidget {
     required PostModel model,
   }) {
     return PostCard(
+      title: model.title,
       content: model.content,
-      writer: model.writer,
-      likeCount: model.likeCount,
-      commentCount: model.commentCount,
-      image: model.imageUrl != null
-          ? Image.network(
-              model.imageUrl!,
-              fit: BoxFit.cover,
-            )
-          : null,
-      createdAt: model.createdAt,
+      // writer: model.writer,
+      // likeCount: model.likeCount,
+      // commentCount: model.commentCount,
+      // image: model.imageUrl != null
+      //     ? Image.network(
+      //         model.imageUrl!,
+      //         fit: BoxFit.cover,
+      //       )
+      //     : null,
+      // createdAt: model.createdAt,
     );
   }
 
@@ -52,9 +55,10 @@ class PostCard extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(md),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            '제목입니다. 내용입니다. 제목입니다. 내용입니다. 제목입니다. 내용입니다. 제목입니다. 내용입니다. 제목입니다. 내용입니다. 제목입니다. 내용입니다.',
+            title,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
             style: TextStyle(

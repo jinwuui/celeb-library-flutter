@@ -12,6 +12,8 @@ class PostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PaginationListView<PostModel>(
+      backgroundColor: Colors.grey.shade200,
+      showPadding: false,
       provider: postProvider,
       itemBuilder: <PostModel>(_, index, model) {
         return GestureDetector(

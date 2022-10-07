@@ -7,34 +7,37 @@ part 'post_model.g.dart';
 @JsonSerializable()
 class PostModel implements IModelWithId {
   @override
-  final String id;
+  final int id;
+
+  final String title;
 
   final String content;
 
-  final String writer;
-
-  @JsonKey(
-    fromJson: DataUtils.pathToUrl,
-  )
-  final String? imageUrl;
-
-  final int commentCount;
-
-  final int likeCount;
-
-  @JsonKey(
-    fromJson: DataUtils.stringToDatetime,
-  )
-  final DateTime createdAt;
+  // final String writer;
+  //
+  // @JsonKey(
+  //   fromJson: DataUtils.pathToUrl,
+  // )
+  // final String? imageUrl;
+  //
+  // final int commentCount;
+  //
+  // final int likeCount;
+  //
+  // @JsonKey(
+  //   fromJson: DataUtils.stringToDatetime,
+  // )
+  // final DateTime createdAt;
 
   PostModel({
     required this.id,
+    required this.title,
     required this.content,
-    required this.writer,
-    required this.imageUrl,
-    required this.commentCount,
-    required this.likeCount,
-    required this.createdAt,
+    // required this.writer,
+    // required this.imageUrl,
+    // required this.commentCount,
+    // required this.likeCount,
+    // required this.createdAt,
   });
 
   factory PostModel.fromJson(Map<String, dynamic> json) =>

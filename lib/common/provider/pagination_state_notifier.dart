@@ -53,7 +53,7 @@ class PaginationStateNotifier<T extends IModelWithId,
     );
   }
 
-  void _throttlePagination(_PaginationInfo info) {
+  Future<void> _throttlePagination(_PaginationInfo info) async {
     final int fetchCount = info.fetchCount;
     final bool fetchMore = info.fetchMore;
     final bool forceRefetch = info.forceRefetch;
@@ -67,7 +67,7 @@ class PaginationStateNotifier<T extends IModelWithId,
       }
 
       PaginationParams paginationParams = PaginationParams(
-        count: fetchCount,
+        size: fetchCount,
       );
 
       if (fetchMore) {
@@ -93,6 +93,21 @@ class PaginationStateNotifier<T extends IModelWithId,
         } else {
           state = CursorPaginationLoading();
         }
+      }
+
+      final res = await repository.paginate(
+        paginationParams: paginationParams,
+      );
+
+      if (state is CursorPaginationFetchingMore) {
+        final castedState = state as CursorPaginationFetchingMore<T>;
+
+        // 기존 데이터에 새로운 데이터 추가
+        state = res.copyWith(
+          data: [...castedState.data, ...res.data],
+        );
+      } else {
+        state = res;
       }
     } catch (e, trace) {
       print(e);
