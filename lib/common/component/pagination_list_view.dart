@@ -1,3 +1,4 @@
+import 'package:eunbinlib_app/common/const/const_widget.dart';
 import 'package:eunbinlib_app/common/const/data.dart';
 import 'package:eunbinlib_app/common/model/cursor_pagination_model.dart';
 import 'package:eunbinlib_app/common/model/i_model_with_id.dart';
@@ -66,13 +67,13 @@ class _PaginationListViewState<T extends IModelWithId>
     // 로딩 중
     if (state is CursorPaginationLoading) {
       return Center(
-        child: CircularProgressIndicator(),
+        child: greenIndicator,
       );
     }
 
     // 에러
     if (state is CursorPaginationError) {
-      return _renderErrorScreen(message: state.message);
+      return renderErrorScreen(message: state.message);
     }
 
     final castedState = state as CursorPagination<T>;
@@ -98,7 +99,7 @@ class _PaginationListViewState<T extends IModelWithId>
                 padding: const EdgeInsets.symmetric(vertical: sm),
                 child: Center(
                   child: castedState is CursorPaginationFetchingMore
-                      ? CircularProgressIndicator()
+                      ? greenIndicator
                       : Text('마지막 데이터입니다 ㅠㅠ'),
                 ),
               );
@@ -118,7 +119,7 @@ class _PaginationListViewState<T extends IModelWithId>
     );
   }
 
-  Widget _renderErrorScreen({
+  Widget renderErrorScreen({
     required String message,
   }) {
     return Column(

@@ -1,4 +1,5 @@
 import 'package:eunbinlib_app/common/const/colors.dart';
+import 'package:eunbinlib_app/common/const/const_widget.dart';
 import 'package:eunbinlib_app/common/layout/default_layout.dart';
 import 'package:flutter/material.dart';
 
@@ -20,9 +21,7 @@ class SplashScreen extends StatelessWidget {
               'asset/img/이세영팀장님.jpg',
             ),
             const SizedBox(height: 16),
-            CircularProgressIndicator(
-              color: Colors.white,
-            )
+            whiteIndicator,
           ],
         ),
       ),

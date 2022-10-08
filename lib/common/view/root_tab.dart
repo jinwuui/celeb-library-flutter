@@ -2,6 +2,7 @@ import 'package:eunbinlib_app/common/const/colors.dart';
 import 'package:eunbinlib_app/common/const/data.dart';
 import 'package:eunbinlib_app/common/layout/default_layout.dart';
 import 'package:eunbinlib_app/feed/view/feed_screen.dart';
+import 'package:eunbinlib_app/post/view/post_detail_screen.dart';
 import 'package:eunbinlib_app/post/view/post_screen.dart';
 import 'package:eunbinlib_app/post/view/post_write_screen.dart';
 import 'package:eunbinlib_app/user/view/user_screen.dart';
@@ -55,6 +56,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
         children: [
           FeedScreen(),
           PostScreen(),
+          // PostDetailScreen(id: '1'),
           UserScreen(),
         ],
       ),

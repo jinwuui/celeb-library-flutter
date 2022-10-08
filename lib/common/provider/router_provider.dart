@@ -17,7 +17,7 @@ final GoRouter router = GoRouter(
             path: 'post/:pid',
             name: PostDetailScreen.routeName,
             builder: (_, state) => PostDetailScreen(
-              id: state.params['pid']!,
+              id: int.parse(state.params['pid']!),
             ),
           ),
           GoRoute(

@@ -1,4 +1,5 @@
 import 'package:eunbinlib_app/common/component/custom_text_form_field.dart';
+import 'package:eunbinlib_app/common/const/const_widget.dart';
 import 'package:eunbinlib_app/common/const/data.dart';
 import 'package:eunbinlib_app/common/layout/default_layout.dart';
 import 'package:eunbinlib_app/common/model/only_id.dart';
@@ -103,8 +104,7 @@ class _PostWriteScreenState extends ConsumerState<PostWriteScreen> {
               ),
             ),
           ),
-          if (state is LoadingStatus)
-            const Center(child: CircularProgressIndicator()),
+          if (state is LoadingStatus) const Center(child: greenIndicator),
         ],
       ),
     );

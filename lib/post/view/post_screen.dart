@@ -23,7 +23,7 @@ class PostScreen extends StatelessWidget {
             context.goNamed(
               PostDetailScreen.routeName,
               params: {
-                'pid': model.id,
+                'pid': model.id.toString(),
               },
             );
           },

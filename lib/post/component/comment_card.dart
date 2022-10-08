@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+
+class CommentCard extends StatelessWidget {
+  const CommentCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue,
+      height: 100,
+    );
+  }
+}
